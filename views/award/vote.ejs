@@ -1,0 +1,46 @@
+<%- include('../partials/header') -%>
+<%- include('../partials/navbar') -%>
+    <div class="container">
+        <% if(total === 100){ %>
+            <h1 class="ui header center aligned editHeader"><%= award.awardName %> Award</h1>
+            <form action="/award/vote/<%= award._id %>" class="voteForm" method="POST">
+                <div class="voteBtn">
+                    <a class="ui primary button" href="/">Go Back</a>
+                </div>
+                <div class="ui four doubling stackable cards">
+                    <% booths.forEach((booth) => { %>
+                        <div class="card">    
+                            <div class="image">
+                                <img class="cardImg" src="<%= booth.image %>">
+                            </div>
+                            <div class="content">
+                                <a class="header"><%= booth.boothName %></a>
+                                <div class="meta">
+                                    <span class="date"><%= booth.subInformation %></span>
+                                </div>
+                                <div class="description">
+                                    <%= booth.information %>
+                                </div>
+                            </div>
+                            <div class="extra content center aligned">
+                                <a class="ui twitter button loadingBtns" href="/award/vote/<%= award._id %>/booth/<%= booth._id %>">Vote</a>
+                            </div>
+                        </div>
+                    <% }) %>
+                </div>
+            </form>
+        <% } else { %>
+            <div class="center aligned vertical-center">
+                <img class="votedImg" src="/img/edit.png">
+                <h2 class="ui header">
+                    <div class="content">
+                        You can't vote in this award yet.
+                        <div class="sub header">It is under editing!</div>
+                    </div>
+                </h2>
+                <a class="ui twitter button loadingBtns" href="/">Go Back</a>
+            </div>
+        <% } %>
+    </div>
+        
+<%- include('../partials/footer') -%>

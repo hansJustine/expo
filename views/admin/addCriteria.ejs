@@ -1,0 +1,104 @@
+<%- include('../partials/header') -%>
+<%- include('../partials/adminnavbar') -%>
+<div class="container">
+    <% if(error.length > 0 || success.length > 0){ %>
+        <div class="flashMsg">
+            <div class="centerAlign">
+                <% if(error && error.length > 0){ %>
+                    <div class="ui floating error message flashSize">
+                        <i class="close icon exitFlash"></i>
+                        <div><%= error %></div>
+                    </div>
+                <% } %>
+                <% if(success && success.length > 0){ %>
+                    <div class="ui floating success message flashSize">
+                        <i class="close icon exitFlash"></i>
+                        <div><%= success %></div>
+                    </div>
+                <% } %>
+            </div>
+        </div>
+    <% } %>
+    <div class="center">
+        <a class="ui twitter button loadingBtns" href="/adminhub/criteria">Go Back</a>
+    </div>
+    <div class="ui text-center basic segment">
+        <% if(!state.state){ %> 
+            <% if(total < 100){ %>
+                <button class="ui yellow labeled icon button registerBtn addCriteriaBtn">
+                    Add Criteria
+                    <i class="add icon"></i>
+                </button>
+            <% } else{ %>
+                <button class="ui yellow labeled icon button registerBtn addCriteriaBtn disabled">
+                    Add Criteria
+                    <i class="add icon"></i>
+                </button>
+            <% } %>
+        <% } %>
+    </div>
+    <!-- Add Criteria Modal -->
+    <div class="ui modal text-center" id="addCriteriaModal">
+        <i class="close icon"></i>
+        <div class="header">
+            <h1 class="ui header">Add Criteria</h1>
+            <form action="/adminhub/criteria/<%= award._id %>" method="POST">
+                <div class="ui form">
+                    <div class="field">
+                        <label for="criteriaName">Criteria Name<span class="requiredField">*</span></label>
+                        <input type="text" placeholder="Criteria Name" name="criteriaName" class="regInput" required>
+                        <label for="password">Percentage<span class="requiredField">*</span></label>
+                        <input type="number" placeholder="Percentage" min="1" max="100" name="percentage" class="regInput" required>
+                    </div>
+                    <div class="ui red inverted cancel button regCanBtn">
+                        <i class="remove icon"></i>
+                        Cancel
+                    </div>
+                    <button class="ui green ok inverted button">
+                        <i class="checkmark icon"></i>
+                        Register
+                    </button>
+                </div>
+            </form>     
+        </div>
+    </div>
+    <!-- List of Criteria -->
+    <div id="criteriaList">
+        <h1 class="ui header center criteriaListHeader">List of Criteria for <%= award.awardName %> Award</h1>
+        <div id="criteriaTable">
+            <div class="row" id="titleRow">
+                <div class="col-4"><h6 class="ui header cardTitle criteriaNameRow">Criteria</h6></div>
+                <div class="col-4"><h6 class="ui header cardTitle percentageRow">Percentage</h6></div>
+            </div>
+            <div class="row" id="criteriaListRow">
+                <% criteria.forEach((criteria) => { %>
+                    <% if(JSON.stringify(criteria.awardId) === JSON.stringify(award._id)){ %>
+                        <div class="col-4">
+                            <h4 class="ui header criteriaData criteriaNameColumn"><%= criteria.criteriaName %></h4>
+                        </div>
+                        <div class="col-4">
+                            <h4 class="ui header criteriaData percentageColumn">
+                                <%= criteria.decimalPercentage * 100 %>% 
+                            </h4>
+                        </div>
+                        <div class="col-4">
+                            <% if(!state.state){ %> 
+                                <form action="/adminhub/criteria/<%= criteria._id %>/award/<%= award._id %>?_method=DELETE" method="POST">
+                                    <button class="mini ui red button deleteCriteria">
+                                        DELETE
+                                    </button>
+                                </form>
+                            <% } %>
+                        </div>
+                    <% } %>
+                <% }) %>
+            </div>    
+            <div class="row">
+                <div class="col-12">
+                    <h4 class="ui header" id="total">Total: <%= total %>% </h4>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<%- include('../partials/footer') -%>

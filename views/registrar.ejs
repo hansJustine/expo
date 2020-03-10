@@ -1,0 +1,175 @@
+<%- include('partials/header') -%>
+<%- include('partials/registrarNavbar') -%>
+<div class="container">
+    <% if(error.length > 0 || success.length > 0){ %>
+        <div class="flashMsg">
+            <div class="centerAlign">
+                <% if(error && error.length > 0){ %>
+                    <div class="ui floating error message flashSize">
+                        <i class="close icon exitFlash"></i>
+                        <div><%= error %></div>
+                    </div>
+                <% } %>
+                <% if(success && success.length > 0){ %>
+                    <div class="ui floating success message flashSize">
+                        <i class="close icon exitFlash"></i>
+                        <div><%= success %></div>
+                    </div>
+                <% } %>
+            </div>
+        </div>
+    <% } %>
+    <div class="center">
+        <div class="ui huge statistic">
+            <div class="value">
+                <%= qrcodes.length %>
+            </div>
+            <div class="label">
+                Total Number of QR Codes
+            </div>
+        </div>
+    </div>
+    <div class="center">
+        <div class="row">
+            <div class="col-6">
+                <div class="ui huge statistic">
+                    <div class="value qrUsed">
+                        <% var usedQrTotal = 0
+                           qrcodes.forEach((qrcode) =>{
+                            if(qrcode.isUsed){
+                                usedQrTotal += 1
+                            }
+                           }) 
+                        %>
+                        <span id="usedMsg"><%= usedQrTotal %></span>
+                    </div>
+                    <div class="label">
+                        Total Number of Used QR codes
+                    </div>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="ui huge statistic">
+                    <div class="value qrNotUsed">
+                        <% var notUsedQrTotal = 0
+                           qrcodes.forEach((qrcode) =>{
+                            if(!qrcode.isUsed){
+                                notUsedQrTotal += 1
+                            }
+                           }) 
+                        %>
+                        <span id="unusedMsg"><%= notUsedQrTotal %></span>
+                    </div>
+                    <div class="label">
+                        Total Number of unused QR Codes
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="text-center regQrBtn">
+        <button class="ui twitter button">Register QR Code</button>
+    </div>
+    <div class="ui modal text-center" id="regQrModal">
+        <i class="close icon"></i>
+        <div class="header">
+            <h1 class="ui header">Register QR Code</h1>
+            <form class="ui form"  action="/adminhub/register/qrcode" method="POST">
+                <div class="field">
+                    <label for="email">Email <span class="requiredField">*</span></label>
+                    <input type="email" placeholder="Email" name="email" class="regInput" required>
+                </div>
+                <div class="ui red inverted cancel button regCanBtn">
+                    <i class="remove icon"></i>
+                    Cancel
+                </div>
+                <button class="ui green ok inverted button">
+                    <i class="checkmark icon"></i>
+                    Add
+                </button>
+            </form>
+        </div>
+    </div>
+    <div class="ui one stackable cards moveFour">
+        <div class="card center adminIndexCard" id="qrCodeCard"> 
+            <div class="content text-center">
+                <div class="header cardTitle">QR Codes</div>
+                <div class="container stateInsContainer">
+                    <div class="stateIns">
+                        <span><i class="fas fa-circle qrUsed"></i>Used</span> 
+                        <span><i class="fas fa-circle qrNotUsed"></i>Not Used</span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6"><h6 class="ui header cardTitle">QR CODES</h6></div>
+                    <div class="col-6"><h6 class="ui header cardTitle">STATE</h6></div>
+                </div>
+                <div class="row list" id="qrList">
+                    <% qrcodes.forEach((qrcode) => { %>
+                        <div class="col-6">
+                            <%= qrcode.code %>
+                        </div>
+                        <div class="col-6">
+                            <% if(qrcode.isUsed){ %>
+                                <span><i class="fas fa-circle qrUsed"></i>
+                            <% } %>
+                            <% if(!qrcode.isUsed){ %>
+                                <span><i class="fas fa-circle qrNotUsed"></i>
+                            <% } %>
+                        </div>
+                    <% }) %>
+                </div>
+            </div>
+        </div>
+        <div class="card center adminIndexCard"> 
+            <div class="content text-center" id="judgesCard">
+                <div class="header cardTitle">Guests</div>
+                <div class="container stateInsContainer">
+                    <div class="stateIns">
+                        <span><i class="fas fa-circle qrUsed"></i>Voted</span> 
+                        <span><i class="fas fa-circle qrNotUsed"></i>Not Voted</span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-2"><h6 class="ui header cardTitle">Name</h6></div>
+                    <div class="col-2"><h6 class="ui header cardTitle">Email</h6></div>
+                    <div class="col-2"><h6 class="ui header cardTitle">Contact Number</h6></div>
+                    <div class="col-2"><h6 class="ui header cardTitle">Relationship to the Student</h6></div>
+                    <div class="col-2"><h6 class="ui header cardTitle">Voted</h6></div>
+                    <div class="col-2"><h6 class="ui header cardTitle">Voted</h6></div>
+                </div>
+                <div class="row list">
+                    <% qrcodes.forEach((qrcode) => { %>
+                        <% if(qrcode.email != null){ %>
+                            <div class="col-2">
+                                <%= qrcode.surname %>, <%= qrcode.firstName %> <%= qrcode.middleInitial %>
+                            </div>
+                            <div class="col-2">
+                                <%= qrcode.email %>
+                            </div>
+                            <div class="col-2">
+                                <%= qrcode.contactNumber %>
+                            </div>
+                            <div class="col-2">
+                                <%= qrcode.relationshipToTheStudent %>
+                            </div>
+                            <div class="col-2">
+                                <% if(qrcode.isUsed){ %>
+                                    <span><i class="fas fa-circle qrUsed"></i>
+                                <% } %>
+                                <% if(!qrcode.isUsed){ %>
+                                    <span><i class="fas fa-circle qrNotUsed"></i>
+                                <% } %>
+                            </div>
+                            <div class="col-2">
+                                <a href="/registrar/<%= qrcode._id %>/edit" class="ui yellow mini button" id="editGuest">EDIT</a>
+                            </div>
+                        <% } %>
+                    <% }) %>
+                </div>
+            </div>
+        </div>
+    </div>
+        
+</div>
+<%- include('partials/footer') -%>

@@ -1,0 +1,25 @@
+<%- include('../partials/header') -%>
+<%- include('../partials/adminnavbar') -%>
+<div class="container">
+    <form action="/award/<%= award._id %>?_method=PUT" method="POST">
+        <div class="editBoothForm">
+            <h1 class="ui header center aligned editHeader">Update Booth</h1>
+            <div class="ui form center">
+                <div class="field">
+                    <label for="name">Award Name<span class="requiredField">*</span></label>
+                    <input type="text" name="awardName" class="editInput" id="name awardName" class="regInput" value="<%= award.awardName %>">
+                </div>
+                <a class="ui orange button" href="/adminhub/awards/booth">
+                    <i class="arrow alternate circle left outline icon"></i>
+                    Go Back
+                </a>
+                <button class="ui button">
+                    <i class="edit icon"></i>
+                    Edit
+                </button>
+            </div>  
+        </div>
+    </form>
+</div>
+
+<%- include('../partials/footer') -%>

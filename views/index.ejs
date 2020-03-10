@@ -1,0 +1,59 @@
+<%- include('partials/header') -%>
+<%- include('partials/navbar') -%>
+<div class="container">
+    <div class="indexContainer">
+        <% if(error.length > 0 || success.length > 0){ %>
+            <div class="flashMsg">
+                <div class="centerAlign">
+                    <% if(error && error.length > 0){ %>
+                        <div class="ui floating error message flashSize">
+                            <i class="close icon exitFlash"></i>
+                            <div><%= error %></div>
+                        </div>
+                    <% } %>
+                    <% if(success && success.length > 0){ %>
+                        <div class="ui floating success message flashSize">
+                            <i class="close icon exitFlash"></i>
+                            <div><%= success %></div>
+                        </div>
+                    <% } %>
+                </div>
+            </div>
+        <% } %> 
+        <h2 class="ui header center aligned">Welcome to STI College Marikina Exposition 2020</h2>
+        <% if(user.judge){ %>
+            <h6 class="ui header center aligned" id="specialHead">Special Awards</h6>
+        <% } %>
+        <div class="ui four doubling stackable cards center aligned">
+            <% awards.forEach((award) =>{ %>
+                <% if(award.forBooth && user.booth){ %>
+                    <div class="card awardsCard">  
+                        <div class="content">
+                            <a class="header"><%= award.awardName %> Award</a>
+                        </div>
+                        <a class="ui twitter animated vertical button loadingBtns" href="/vote/<%= award._id %>">
+                            <div class="visible content"><i class="pencil alternate icon"></i>Vote</div>
+                            <div class="hidden content">
+                            Vote Objectively!
+                            </div>
+                        </a>
+                    </div>
+                <% } %>
+                <% if(award.forJudge && user.judge){ %>
+                    <div class="card awardsCard">  
+                        <div class="content">
+                            <a class="header"><%= award.awardName %> Award</a>
+                        </div>
+                        <a class="ui twitter animated vertical button loadingBtns" href="/award/vote/<%= award._id %>">
+                            <div class="visible content"><i class="pencil alternate icon"></i>Vote</div>
+                            <div class="hidden content">
+                            Vote Objectively!
+                            </div>
+                        </a>
+                    </div>
+                <% } %>
+            <% }) %> 
+        </div>
+    </div>
+</div>
+<%- include('partials/footer') -%>

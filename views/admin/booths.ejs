@@ -1,0 +1,37 @@
+<%- include('../partials/header') -%>
+<%- include('../partials/adminnavbar') -%>
+    <div class="container">
+        <h3 class="ui header center" id="boothHeader">BOOTHS</h3>
+        <div class="ui four doubling stackable cards">
+            <% booths.forEach((booth) =>{ %>
+                <div class="card">    
+                    <div class="image">
+                        <img class="cardImg" src="<%= booth.image %>">
+                    </div>
+                    <div class="content">
+                        <a class="header"><%= booth.boothName %></a>
+                        <div class="meta">
+                            <span class="date"><%= booth.subInformation %></span>
+                        </div>
+                        <div class="description">
+                            <%= booth.information %>
+                        </div>
+                    </div>
+                    <% if(ifAdmin && !foundState.state){ %>
+                        <div class="extra content center aligned">
+                            <div class="ui buttons">
+                                <a class="ui button" href="/booth/<%= booth._id %>/edit">
+                                    Edit
+                                </a>
+                                <div class="or"></div>
+                                <form class="deleteBtn" action="/booth/<%= booth._id %>?_method=DELETE" method="POST">
+                                    <button class="ui red button">Delete</button>
+                                </form>
+                            </div>
+                        </div>
+                    <% } %>
+                </div>
+            <% }) %> 
+        </div>
+    </div>
+<%- include('../partials/footer') -%>

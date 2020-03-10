@@ -1,0 +1,52 @@
+<%- include('../partials/header') -%>
+<%- include('../partials/adminnavbar') -%>
+   
+    <div class="container">
+        <% if(!foundState.state){ %>
+            <div id="tallyscore">
+                <form action="/adminhub/winners" method="POST">
+                    <button class="btn btn-primary center">Tally Scores</button>
+                </form>
+            </div>
+        <% } %>
+            <h2 class="ui header center aligned" id="scoresHeader">Guests Votes</h2>
+            <% for(var i = 0; i < awards.length; i++){ %>
+                <% if(awards[i].forBooth){ %>
+                    <div class="row text-center alignCard" style="display: flex; flex-wrap: wrap;">
+                        <div class="col-12">
+                            <div class="card cardBody" style="width: 100%; height: 28rem;">
+                                <div class="card-body">
+                                    <div id="awardBooth<%= i %>"></div>                              
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <% } %>
+            <% } %> 
+            <h2 class="ui header center aligned">
+                <div class="content">
+                    Judges Votes 
+                    <div class="sub header">
+                        Special Awards
+                    </div>
+                </div>
+            </h2>
+            <% for(var i = 0; i < awards.length; i++){ %>
+                <% if(awards[i].forJudge){ %>
+                    <div class="row text-center alignCard" style="display: flex; flex-wrap: wrap;">
+                        <div class="col-12">
+                            <div class="card cardBody" style="width: 100%; height: 28rem;">
+                                <div class="card-body">
+                                    <div id="awardJudge<%= i %>"></div>                              
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <% } %>
+            <% } %> 
+    </div>
+
+
+
+
+<%- include('../partials/footer') -%>

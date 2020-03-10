@@ -1,0 +1,142 @@
+<%- include('../partials/header') -%>
+<%- include('../partials/adminnavbar') -%>
+    
+    <div class="container">
+        <% if(error.length > 0 || success.length > 0){ %>
+            <div class="flashMsg">
+                <div class="centerAlign">
+                    <% if(error && error.length > 0){ %>
+                        <div class="ui floating error message flashSize">
+                            <i class="close icon exitFlash"></i>
+                            <div><%= error %></div>
+                        </div>
+                    <% } %>
+                    <% if(success && success.length > 0){ %>
+                        <div class="ui floating success message flashSize">
+                            <i class="close icon exitFlash"></i>
+                            <div><%= success %></div>
+                        </div>
+                    <% } %>
+                </div>
+            </div>
+        <% } %>
+        <div class="ui four doubling stackable cards moveFour">
+            <div class="card adminIndexCard"> 
+                <div class="content text-center">
+                    <div class="header cardTitle">Voting State</div>
+                    <div class="meta">
+                        <% const today = new Date()%>
+                        <span class="date">Date: <%= today.getFullYear() %> - <%= today.getMonth() + 1 %> - <%= today.getDate() %></span>
+                    </div>
+                    <div class="ui statistic text-center">
+                        <i class="fas fa-circle webState"></i>
+                        <div class="label">
+                            <h6 class="ui header stateMsg">OFFLINE</h6>
+                        </div>
+                        <form action="/adminhub/changestate?_method=PUT" method="POST">
+                            <button class="mini ui toggle button stateBtn loadingBtns"></button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="card adminIndexCard"> 
+                <div class="content text-center">
+                    <div class="header cardTitle">Votes</div>
+                    <div class="ui statistic text-center">
+                        <div class="value">
+                            <%= votes.length %>
+                        </div>
+                        <div class="label">
+                            <h6 class="ui header">Total Number of Votes</h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card adminIndexCard"> 
+                <div class="content text-center">
+                    <div class="header cardTitle">Booths</div>
+                    <div class="ui statistic text-center">
+                        <div class="value">
+                            <%= booths.length %>
+                        </div>
+                        <div class="label">
+                            <h6 class="ui header">Total Number of Booths</h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card adminIndexCard"> 
+                <div class="content text-center">
+                    <div class="header cardTitle">Awards</div>
+                    <div class="ui statistic text-center">
+                        <div class="value">
+                            <%= awards.length %>
+                        </div>
+                        <div class="label">
+                            <h6 class="ui header">Total Number of Awards</h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="ui two stackable cards moveFour">
+            <div class="card adminIndexCard" id="qrCodeCard"> 
+                <div class="content text-center">
+                    <div class="header cardTitle">QR Codes</div>
+                    <div class="container stateInsContainer">
+                        <div class="stateIns">
+                            <span><i class="fas fa-circle qrUsed"></i>Used</span> 
+                            <span><i class="fas fa-circle qrNotUsed"></i>Not Used</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6"><h6 class="ui header cardTitle">QR CODES</h6></div>
+                        <div class="col-6"><h6 class="ui header cardTitle">STATE</h6></div>
+                    </div>
+                    <div class="row list" id="qrList">
+                        <% qrcodes.forEach((qrcode) => { %>
+                            <div class="col-6">
+                                <%= qrcode.code %>
+                            </div>
+                            <div class="col-6">
+                                <% if(qrcode.isUsed){ %>
+                                    <span><i class="fas fa-circle qrUsed"></i>
+                                <% } %>
+                                <% if(!qrcode.isUsed){ %>
+                                    <span><i class="fas fa-circle qrNotUsed"></i>
+                                <% } %>
+                            </div>
+                        <% }) %>
+                    </div>
+                </div>
+            </div>
+            <div class="card adminIndexCard"> 
+                <div class="content text-center" id="judgesCard">
+                    <div class="header cardTitle">Judges</div>
+                    <div class="row">
+                        <div class="col-6"><h6 class="ui header cardTitle">Judge</h6></div>
+                        <div class="col-6"><h6 class="ui header cardTitle"></h6></div>
+                    </div>
+                    <div class="row list">
+                        <% voters.forEach((voter) => { %>
+                            <% if(voter.judge){ %>
+                                <div class="col-6 voterCol">
+                                    <%= voter.username %>
+                                </div>
+                                <div class="col-6 voterCol">
+                                    <% if(!state.state){ %>
+                                        <form action="/adminhub/judge/<%= voter._id %>?_method=DELETE" method="POST">
+                                            <button class="mini ui red button">
+                                                DELETE
+                                            </button>
+                                        </form>
+                                    <% } %>
+                                </div>
+                            <% } %>
+                        <% }) %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<%- include('../partials/footer') -%>

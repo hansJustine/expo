@@ -1,0 +1,42 @@
+<%- include('partials/header') -%>
+<div class="container">
+    <% if(error.length > 0 || success.length > 0){ %>
+        <div class="flashMsg">
+            <div class="centerAlign">
+                <% if(error && error.length > 0){ %>
+                    <div class="ui floating error message flashSize">
+                        <i class="close icon exitFlash"></i>
+                        <div><%= error %></div>
+                    </div>
+                <% } %>
+                <% if(success && success.length > 0){ %>
+                    <div class="ui floating success message flashSize">
+                        <i class="close icon exitFlash"></i>
+                        <div><%= success %></div>
+                    </div>
+                <% } %>
+            </div>
+        </div>
+    <% } %>
+    <div class="container" id="loginContainer">
+        <div class="ui centered card" id="loginCard">
+            <div id="contentContainer">
+                <h1 class="ui header text-center" id="loginHead">STI COLLEGE MARIKINA <br> EXPOSITION</h1>
+                <form action="/login" method="POST">
+                    <div id="loginForm">
+                        <div class="ui form">
+                            <div class="field">
+                                <input type="text" placeholder="Username" name="username" id="username" class="loginInput" onkeyup="success()" required>
+                                <input type="password" placeholder="Password" name="password" id="password" class="loginInput" onkeyup="success()" required>
+                            </div>
+                                <button class="ui twitter button loadingBtns" id="loginBtn" disabled>
+                                    Log In
+                                </button>
+                        </div>  
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<%- include('partials/footer') -%>

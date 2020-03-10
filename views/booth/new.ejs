@@ -1,0 +1,13 @@
+<%- include('../partials/header') -%>
+<div class="d-flex" id="wrapper">
+    <%- include('../partials/adminSideNav') -%>
+    <h1>Add Booth</h1>
+    <form action="/booth" method="POST">
+        <label for="boothName">Booth Name</label>
+        <input type="text" name="booth[boothName]">
+        <label for="information">Description</label>
+        <input type="text" name="booth[information]">
+        <button>Add</button>
+    </form>
+</div>
+<%- include('../partials/footer') -%>

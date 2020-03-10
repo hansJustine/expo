@@ -1,0 +1,50 @@
+<%- include('partials/header') -%>
+<%- include('partials/navbar') -%>
+    <% if(error.length > 0 || success.length > 0){ %>
+        <div class="flashMsg">
+            <div class="centerAlign">
+                <% if(error && error.length > 0){ %>
+                    <div class="ui floating error message flashSize">
+                        <i class="close icon exitFlash"></i>
+                        <div><%= error %></div>
+                    </div>
+                <% } %>
+                <% if(success && success.length > 0){ %>
+                    <div class="ui floating success message flashSize">
+                        <i class="close icon exitFlash"></i>
+                        <div><%= success %></div>
+                    </div>
+                <% } %>
+            </div>
+        </div>
+    <% } %>
+    <div class="container">
+        <h1 class="ui header center aligned editHeader"><%= award.awardName %> Award</h1>
+            <div class="ui centered card">
+                <div class="image">
+                    <img class="cardImg" src="<%= booth.image %>">
+                </div>
+                <div class="content">
+                    <a class="header"><%= booth.boothName %></a>
+                    <div class="meta">
+                        <span class="date"><%= booth.subInformation %></span>
+                    </div>
+                    <div class="description">
+                        <%= booth.information %>
+                    </div>
+                </div>
+                <div class="extra content center aligned">
+                    <form action="/vote" method="POST">
+                        <input type="text"class="inputReq" id="awardId" name="id" value="<%= award._id %>" required>
+                        <input type="text" class="inputReq" required>
+                        <button class="ui facebook compact labeled icon button" id="voteBtn">
+                            <i class="pencil alternate icon"></i>
+                            Vote
+                        </button>
+                    </form>
+                </div>
+            </div>
+                
+    </div>
+
+<%- include('partials/footer') -%>

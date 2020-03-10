@@ -1,0 +1,44 @@
+<%- include('partials/header') -%>
+<%- include('partials/registrarNavbar') -%>
+<div class="container">
+    <form action="/registrar/<%= qrcode._id %>?_method=PUT" method="POST">
+        <div class="editBoothForm">
+            <h1 class="ui header center aligned editHeader">Update Guest Information</h1>
+            <div class="ui form">
+                <div class="field">
+                    <label for="firstName">First Name <span class="requiredField">*</span></label>
+                    <input type="text" placeholder="First Name" name="firstName" value="<%= qrcode.firstName %>" class="regInput" required>
+                    <label for="surname">Surname <span class="requiredField">*</span></label>
+                    <input type="text" placeholder="surname" name="surname" value="<%= qrcode.surname %>" class="regInput" required>
+                    <label for="mi">Middle Initial</label>
+                    <input type="text" placeholder="mi" name="mi" value="<%= qrcode.middleInitial %>" class="regInput">
+                    <label for="contactNumber">Contact Number <span class="requiredField">*</span></label>
+                    <input type="number" placeholder="+63" min="0" name="contactNumber" value="<%= qrcode.contactNumber %>" class="regInput" required>
+                    <label for="email">Email <span class="requiredField">*</span></label>
+                    <input type="email" placeholder="Email" min="0" name="email" value="<%= qrcode.email %>" class="regInput" required>
+                    <label for="inviterRelationship">Your relationship to who invited you</label>
+                    <select class="ui fluid dropdown" id="inviterRelationship" aria-selected="<%= qrcode.relationshipToTheStudent %>" aria-required="true" class="regInput" onchange='ifOthers(this.value);'>
+                        <optgroup label="Relationship">
+                            <option selected disabled>Relationship (<%= qrcode.relationshipToTheStudent %>)</option>
+                            <option value="friend">Friend</option>
+                            <option value="mother">Mother</option>
+                            <option value="father">Father</option>
+                            <option value="others">others</option>
+                        </optgroup>
+                    </select>
+                    <label for="othersinput" id="specify" style="display: none;">Please Specify<span class="requiredField">*</span></label>
+                    <input type="text" name="relationship" id="othersInput" value="<%= qrcode.relationshipToTheStudent %>" style='display:none;' required/>
+                </div>
+                <a class="ui orange button" href="/registrar">
+                    <i class="arrow alternate circle left outline icon"></i>
+                    Go Back
+                </a>
+                <button class="ui button">
+                    <i class="edit icon"></i>
+                    Edit
+                </button>
+            </div>  
+        </div>
+    </form>
+</div>
+<%- include('partials/footer') -%>

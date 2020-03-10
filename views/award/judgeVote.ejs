@@ -1,0 +1,68 @@
+<%- include('../partials/header') -%>
+<%- include('../partials/navbar') -%>
+    <div class="container">
+        <% if(total === 100){ %>
+            <% if(isVoted){ %>
+                <div class="center aligned vertical-center">
+                    <img class="votedImg" src="/img/checkmark.png">
+                    <h2 class="ui header">
+                        <div class="content">
+                            You've successfully voted in this Booth!
+                            <div class="sub header">Thanks a lot!</div>
+                        </div>
+                    </h2>
+                    <a class="ui twitter button loadingBtns" href="/award/vote/<%=award._id%>">Vote on another booth</a>
+                </div>
+            <% } else {%> 
+                <h1 class="ui header center aligned editHeader">
+                    <div class="content">
+                        <span id="ins">Instruction:</span>
+                        <div class="sub header" id="votingIns">Input 1 - 100 for the voting of the awards</div>
+                    </div>
+                </h1>
+
+                <h1 class="ui header center aligned editHeader">
+                    <div class="content">
+                        <%= booth.boothName %>
+                        <div class="sub header"><%= award.awardName %> Award</div>
+                    </div>
+                </h1>
+                <form action="/award/vote/<%=award._id%>/booth/<%= booth._id %>" method="POST">
+                    <div class="editVoteForm">
+                        <% criteria.forEach((criteria) => { %>
+                            <% if(JSON.stringify(criteria.awardId) === JSON.stringify(award._id)){ %>
+                                <div class="ui form">
+                                    <h1 class="ui header center aligned editHeader">
+                                        <div class="content">
+                                            <%= criteria.criteriaName %> -
+                                            <div class="sub header" style="display: inline;"><%= criteria.decimalPercentage * 100 %>%</div>
+                                        </div>
+                                    </h1>
+                                    <div class="field">
+                                        <input type="number" min="1" max="100" name="<%= criteria.criteriaName %>" placeholder="100" class="voteInput" required>
+                                    </div>
+                                </div>
+                            <% } %>
+                        <% }) %>
+                        <div class="center">
+                            <button class="ui primary button" id="judgeVoteBtn">Vote</button>
+                        </div>
+                        </div>
+                    </form> 
+                </form> 
+            <% } %>   
+        <% } else{ %>
+            <div class="center aligned vertical-center">
+                <img class="votedImg" src="/img/edit.png">
+                <h2 class="ui header">
+                    <div class="content">
+                        You can't vote in this award yet.
+                        <div class="sub header">It is under editing!</div>
+                    </div>
+                </h2>
+                <a class="ui twitter button loadingBtns" href="/">Go Back</a>
+            </div>
+        <% } %>
+            
+    </div>
+<%- include('../partials/footer') -%>

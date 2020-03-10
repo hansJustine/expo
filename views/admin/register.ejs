@@ -1,0 +1,133 @@
+<%- include('../partials/header') -%>
+<%- include('../partials/adminnavbar') -%>
+<div class="container">
+    <% if(error.length > 0 || success.length > 0){ %>
+        <div class="flashMsg">
+            <div class="centerAlign">
+                <% if(error && error.length > 0){ %>
+                    <div class="ui floating error message flashSize">
+                        <i class="close icon exitFlash"></i>
+                        <div><%= error %></div>
+                    </div>
+                <% } %>
+                <% if(success && success.length > 0){ %>
+                    <div class="ui floating success message flashSize">
+                        <i class="close icon exitFlash"></i>
+                        <div><%= success %></div>
+                    </div>
+                <% } %>
+            </div>
+        </div>
+    <% } %>
+    <div class="ui center aligned basic segment">
+        <button class="ui yellow labeled icon button registerBtn registerJudgeBtn">
+            Register Judge
+            <i class="add icon"></i>
+        </button>
+        <div class="ui horizontal divider">
+            Or
+        </div>
+        <button class="ui facebook labeled icon button registerBtn registerBoothBtn">
+            Register Booth
+            <i class="add icon"></i>
+        </button>
+        <div class="ui horizontal divider">
+            Or
+        </div>
+        <button class="ui black labeled icon button registerBtn registerRegistrarBtn">
+            Register Registrar
+            <i class="add icon"></i>
+        </button>
+    </div>
+    <!-- Judge Modal -->
+    <div class="ui modal text-center" id="registerJudgeModal">
+        <i class="close icon"></i>
+        <div class="header">
+            <h1 class="ui header">Register Judge</h1>
+            <form action="/adminhub/register/judge" method="POST">
+                <div class="ui form">
+                    <div class="field">
+                        <label for="username">Username <span class="requiredField">*</span></label>
+                        <input type="text" placeholder="Username" name="username" class="regInput" required>
+                        <label for="password">Password <span class="requiredField">*</span></label>
+                        <input type="password" placeholder="Password" name="password" class="regInput" required>
+                    </div>
+                    <div class="ui red inverted cancel button regCanBtn">
+                        <i class="remove icon"></i>
+                        Cancel
+                    </div>
+                    <button class="ui green ok inverted button">
+                        <i class="checkmark icon"></i>
+                        Register
+                    </button>
+                </div>
+            </form>     
+        </div>
+    </div>
+    <!-- Registrar Modal -->
+    <div class="ui modal text-center" id="registerRegistrarModal">
+        <i class="close icon"></i>
+        <div class="header">
+            <h1 class="ui header">Register Registrar</h1>
+            <form action="/adminhub/register/registrar" method="POST">
+                <div class="ui form">
+                    <div class="field">
+                        <label for="username">Username <span class="requiredField">*</span></label>
+                        <input type="text" placeholder="Username" name="username" class="regInput" required>
+                        <label for="password">Password <span class="requiredField">*</span></label>
+                        <input type="password" placeholder="Password" name="password" class="regInput" required>
+                    </div>
+                    <div class="ui red inverted cancel button regCanBtn">
+                        <i class="remove icon"></i>
+                        Cancel
+                    </div>
+                    <button class="ui green ok inverted button">
+                        <i class="checkmark icon"></i>
+                        Register
+                    </button>
+                </div>
+            </form>     
+        </div>
+    </div>
+    <!-- Booth Modal -->
+    <div class="ui modal text-center" id="registerBoothModal">
+        <i class="close icon"></i>
+        <div class="header">
+            <h1 class="ui header">Register Booth</h1>
+            <form action="/adminhub/register/booth" method="POST">
+                <div class="ui form">
+                    <div class="field">
+                        <div class="row">
+                            <div class="col-6">
+                                <label for="boothName">Booth Name <span class="requiredField">*</span></label>
+                                <input type="text" placeholder="Booth Name" name="boothName" class="regInput regBoothInput" required>
+                                <label for="image">Image</label>
+                                <input type="text" placeholder="Image" name="image" class="regInput">
+                                <label for="information">Information</label>
+                                <input type="text" placeholder="Information" name="information" class="regInput regBoothInput">
+                                <label for="subInformation">Sub Information</label>
+                                <input type="text" placeholder="Sub Information" name="subInformation" class="regInput regBoothInput">
+                            </div>
+                            <div class="col-6">
+                                <label for="email">Email <span class="requiredField">*</span></label>
+                                <input type="email" placeholder="Email" name="email" class="regInput regBoothInput" required>
+                                <label for="username">Username <span class="requiredField">*</span></label>
+                                <input type="text" placeholder="Username" name="username" class="regInput regBoothInput" required>
+                                <label for="password">Password <span class="requiredField">*</span></label>
+                                <input type="password" placeholder="Password" name="password" class="regInput regBoothInput" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui red inverted cancel button regCanBtn">
+                        <i class="remove icon"></i>
+                        Cancel
+                    </div>
+                    <button class="ui green ok inverted button">
+                        <i class="checkmark icon"></i>
+                        Register
+                    </button>
+                </div>
+            </form>     
+        </div>
+    </div>
+<%- include('../partials/footer') -%>

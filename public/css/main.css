@@ -1,0 +1,653 @@
+body{
+    background-color: #fafafa !important;
+    overflow-x: hidden;
+    font-family: 'Roboto',sans-serif !important;
+}
+.flashSize{
+    width: 400px;
+}
+.flashMsg .centerAlign .message{
+    margin: 0 auto;
+}
+.container.main{
+    margin-top: 3em;
+}
+.ui.form .field .editInput{
+    width: 300px;
+}
+.deleteBtn{
+    display: inline;
+}
+.center{
+    margin-top: 40px;
+    text-align: center;
+}
+.centerWinner{
+    text-align: center !important;
+}
+.modal-dialog{
+    color: black;
+}
+i.idea{
+    font-size: 2em;
+}
+.ui.button.edit{
+    width: 100%;
+}
+#adminBtn{
+    display: inline-block;
+}
+#delete{
+    display: inline-block;
+}
+#logout{
+    text-align: center;
+}
+#logoutLink{
+    color: darkslategray;
+}
+#logoutAdmin{
+    text-align: center;
+}
+#logoutAdmin .ui.header, #logout .ui.header{
+    text-align: center;
+    font-size: 11px;
+    text-transform: uppercase;
+    margin: 5px;
+    font-weight: 600;
+    font-family: 'Montserrat', sans-serif;
+}
+#logoutLinkAdmin{
+    color: darkslategray;
+}
+#criteriaHead{
+    margin-top: 30px;
+}
+/* 404 */
+  #notfound {
+    position: relative;
+    height: 100vh;
+  }
+  
+  #notfound .notfound {
+    position: absolute;
+    left: 50%;
+    margin-top: 17%;
+    -webkit-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+  }
+  
+  .notfound {
+    max-width: 710px;
+    width: 100%;
+    text-align: center;
+    padding: 0px 15px;
+    line-height: 1.4;
+  }
+  
+  .notfound .notfound-404 {
+    height: 200px;
+    line-height: 200px;
+  }
+  
+  .notfound .notfound-404 h1 {
+    font-family: 'Fredoka One', cursive;
+    font-size: 168px;
+    margin: 0px;
+    color: #32527b;
+    text-transform: uppercase;
+  }
+  
+  .notfound h2 {
+    font-family: 'Raleway', sans-serif;
+    font-size: 22px;
+    font-weight: 400;
+    text-transform: uppercase;
+    color: #222;
+    margin: 0;
+  }
+  .notfound a {
+    font-family: 'Raleway', sans-serif;
+    margin-top: 10px;
+    display: inline-block;
+    font-weight: 700;
+    border-radius: 15px;
+    text-decoration: none;
+    color: #39b1cb;
+  }
+  
+  .notfound a>.arrow {
+    position: relative;
+    top: -2px;
+    border: solid #39b1cb;
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    padding: 3px;
+    -webkit-transform: rotate(135deg);
+        -ms-transform: rotate(135deg);
+            transform: rotate(135deg);
+  }
+  
+  @media only screen and (max-width: 767px) {
+    .notfound .notfound-404 {
+      height: 122px;
+      line-height: 122px;
+    }
+    .notfound .notfound-404 h1 {
+      font-size: 122px;
+    }
+  }
+  
+
+/* VOTE Emoji */
+.voteRateImg{
+    width: 50px;
+    margin-right: 15px;
+}
+.voteRate{
+    width: fit-content;
+    margin-right: 32px;
+    display: inline;
+}
+#centerRates{
+    margin: 20px auto;
+} 
+figure {
+    display: inline-block;
+    text-align: center;
+    margin: 5px; /* adjust as needed */
+}
+#centerRates figure figcaption{
+    margin-top: 10px;
+    margin-right: 7px;
+    font-size: 14px;
+    font-weight: 600;
+    font-family: 'Montserrat', sans-serif;
+}
+figure img {
+    vertical-align: top;
+}
+.voteEmoji .voteRateImg{
+    width: 40px;
+}
+.voteRateImg { 
+    transition: all .2s ease-in-out; 
+}
+.voteRateImg:hover { 
+    -ms-transform: scale(1.5); /* IE 9 */
+    -webkit-transform: scale(1.5); /* Safari 3-8 */
+    transform: scale(1.5); 
+}
+#bgImage1{
+    background: url('/img/vote/1fill.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.editVoteForm{
+    width: 30%;
+    margin: 0 auto;
+}
+.ui.form .field .voteInput{
+    margin-top: 20px;
+}
+#votingIns{
+    font-size: 16px;
+}
+#ins{
+    color: red;
+}
+#judgeVoteBtn{
+    margin-bottom: 30px;
+}
+/* WINNERS */
+#boothHeader{
+    margin-top: 20px;
+}
+#retally{
+    margin-bottom: 30px;
+}
+#tallyscore{
+    margin-top: 10px !important;
+    text-align: center;
+}
+#winnersContainer{
+    padding-top: 15px;
+}
+#scoresHeader {
+    margin-top: 30px;
+}
+#editGuest{
+    margin-bottom: 15px;
+}
+#unusedMsg{
+    color: red;
+}
+#usedMsg{
+    color: #20d420;
+}
+#specialHead{
+    color: #55acee;
+}
+/* Navbar */
+.navbar-toggler{
+    border-style: none;
+}
+.bg-light {
+    background-color: #fff!important;
+    box-shadow: 0 3px 2px -2px rgba(0,0,0,.2);
+}
+button:focus{
+    outline: none !important;
+}
+.ui.avatar.image{
+    object-fit: cover;
+    width: 2em;
+    height: 2em;
+    display: inline;
+}
+/* REGISTER */
+.registerBtn{
+    width: 200px;
+}
+.ui.center.aligned.basic{
+    padding-top: 70px;
+    width: 80%;
+    margin: 0 auto;
+}
+.registerBoothInput{
+    margin-bottom: 0;
+}
+/* Admin Index */
+.ui.four.doubling.moveFour{
+    margin-top: 30px;
+}
+.moveFour .ui.statistic{
+    width: 100%;
+    margin-top: 20px;
+}
+.moveFIndexCard{
+    margin-top: 50px;
+}
+.ui.four.cards>.card.adminIndexCard {
+    height: 200px;
+}
+.ui.two.cards>.card.adminIndexCard {
+    height: 400px;
+}
+.ui.one.cards>.card.adminIndexCard {
+    height: 500px;
+}
+.webState{
+    color:#20d420;
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+.moveFour .ui.statistic .stateBtn{
+    margin-top: 20px;
+}
+.ui.moveFour .card.adminIndexCard .content .header.cardTitle{
+    margin-top: 12px;
+    font-size: 12px;
+    text-transform: uppercase;
+    font-family: 'Montserrat', sans-serif;
+}
+.ui.one{
+    margin-top: 10px;
+}
+.regQrCard{
+    width: 100%;
+    height: 500px;
+}
+.regQrBtn{
+    margin-top: 20px;
+}
+#qrCodeCard{
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+#qrCodeCardReg{
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+#judgesCard{
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+#judgesCardReg{
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+.list{
+    margin-top: 8px;
+}
+.voterCol{
+    margin-bottom: 10px;
+}
+.ui.red.button.deleteJudge{
+    margin-bottom: 10px;
+}
+.stateInsContainer{
+    margin-top: 10px;
+}
+.stateIns span{
+    margin: 0 auto;
+    margin-top: 12px;
+    font-size: 12px;
+    text-transform: uppercase;
+    font-weight: bolder;
+    font-family: 'Montserrat', sans-serif;
+}
+.stateIns .qrUsed, .stateIns .qrNotUsed{
+    margin-right: 5px;
+    font-size: x-small;
+}
+.qrUsed{
+    color: #20d420;
+    font-size: x-small;
+}
+.qrNotUsed{
+    color: red;
+    font-size: x-small;
+}
+/* Modal */
+.dimmed.dimmable > .ui.animating.dimmer, .dimmed.dimmable > .ui.visible.dimmer, .ui.active.dimmer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .ui.modal,
+  .ui.active.modal {
+    margin: 0 auto!important;
+    top: auto !important;
+    left: auto !important;
+    width: 500px;
+    height: max-content;
+    transform-origin: center !important;
+    transition: all ease .5s;
+  }
+
+/* Radio Button */
+.radioIcon{
+    color: red;
+}
+.cards .card .image img.cardImg{
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+}
+.voteCardTitle{
+    text-align: center;
+    margin: 0;
+    height: 100%;
+}
+.voteCardTitle i{
+    margin: 0;
+    padding: 0;
+    font-size: large;
+}
+.voteBtn{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+/* Edit Booth */
+.editBoothForm{
+    width: 50%;
+    margin: 0 auto;
+}
+.center.aligned.editHeader{
+    margin-bottom: 0 !important;
+    margin-top: 50px !important;
+}
+#editBtn{
+    width: 100%;
+}
+
+/* Voted Message */
+.votedImg{
+    width: 100px;
+}
+.vertical-center {
+    padding: 70px 0;
+}
+
+/* Awards Card */
+.ui.header.center{
+    text-transform: uppercase;
+    margin-bottom: 30px;
+    font-size: medium;
+    font-family: 'Montserrat', sans-serif;
+}
+.awardsCard{
+    width: 50%;
+    height: 50%;
+}
+.indexContainer{
+    margin-top: 40px;
+}
+.formAward{
+    margin: 0 auto;
+}
+.ui.four.doubling.cardForAward{
+    margin-top: 20px;
+}
+
+/* winners table */
+#HTMLtoPDF .winnersTable{
+    margin: 30px auto;
+    width: 80%;
+    padding-top: 0 !important;
+}
+
+/* Login and Signup */
+form{
+    display: inline;
+}
+.centerAlign{
+    margin: 10px auto;
+}
+.form-control{
+    width: 300px;
+}
+.loginMsg{
+    margin: 20px auto;
+    text-align: center;
+}
+.loginBtn{
+    width: 100%;
+}
+.moveForm{
+    padding-top: 90px;
+}
+.downloadBtn{
+    display: inline-block;
+}
+.index .centerAlign{
+    text-align: center;
+    margin-top: 50px;
+}
+#openreader-btn{
+    margin-top: 10px;
+}
+#loginBtn{
+    width: 75%;
+    height: 30px;
+    font-size: 12px;
+    margin-right: 0;
+    border-radius: 2px;
+}
+#loginContainer{
+    overflow-y: hidden;
+    height: 100vh;
+}
+#contentContainer{
+    margin-top: 30px;
+}
+#loginCard{
+    width: 340px;
+    height: 340px;
+    margin-top: 40px;
+    border-color: lightgray !important;
+    border-radius: 2px;
+}
+#loginForm .field{
+    margin-bottom: 0;
+    margin-top: 20px;
+}
+#loginForm{
+    margin-bottom: 0;
+    text-align: center;
+}
+#loginForm .loginInput{
+    font-size: 12px;
+    margin-bottom: 8px;
+    width: 75%;
+    height: 30px;
+    background-color: #fafafa;
+    border-color: lightgray;
+    border-radius: 2px;
+}
+#loginHead{
+    margin: 20px auto;
+    font-size: 17px;
+    text-transform: uppercase;
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* Vote Via QR */
+.inputReq{
+    display: none;
+}
+
+/* Vote (Judge) */
+.radioCard{
+    display: none;
+}
+
+/* Register */
+.regHeader{
+    text-align: center;
+}
+.ui.form .field .regInput{
+    margin-bottom: 10px;
+}
+.requiredField{
+    color: red;
+}
+
+/* CRITERIA */
+#criteriaList{
+    margin-top: 20px;
+    text-align: center;
+}
+#criteriaListRow{
+    margin-top: 20px;
+}
+#total{
+    margin-top: 20px;
+}
+#criteriaTable{
+    margin-top: 20px;
+}
+#criteriaListRow .col-4{
+    margin-bottom: 20px;
+}
+#criteriaList #criteriaTable #titleRow .criteriaNameRow{
+    font-size: x-large;
+}
+#criteriaList #criteriaTable #titleRow .percentageRow{
+    font-size: x-large;
+}
+#criteriaList #criteriaTable .row#criteriaListRow div.col-6 .criteriaData.criteriaNameColumn{
+    font-size: large;
+}
+#criteriaList #criteriaTable .row#criteriaListRow div.col-6 .criteriaData.percentageColumn{
+    font-size: large;
+}
+
+
+/* CHART */
+#chart {
+  max-width: 650px;
+  margin: 35px auto;
+}
+
+
+/* INDEX */
+.cardBody{
+    margin-top: 10px;
+}
+/* NAV */
+.dropdown-menu.dropdown-menu-right.text-center .welcomeMsg,
+.nav-link.dropdown-toggle{
+    color: black;
+}
+.logoutIcon{
+    margin-right: 2px;
+}
+
+/* ADMIN SIDE NAVBAR */
+#sidebar {
+    background: #38414a !important;
+    height: 100vh;
+    color: #fff;
+}
+
+
+@media (max-width: 991px){
+    .cards .card .image img.cardImg{
+        height: 200px;
+    }
+}
+@media (max-width: 767px){    
+    .cards .card .image img.cardImg{
+        height: 300px;
+    }
+}
+@media (min-width: 768px) {
+  #sidebar-wrapper {
+    margin-left: 0;
+  }
+  #page-content-wrapper {
+    min-width: 0;
+    width: 100%;
+  }
+
+  #wrapper.toggled #sidebar-wrapper {
+    margin-left: -15rem;
+  }
+}
+@media (max-width: 600px){
+    .form-control{
+        width: 400px;
+    }
+    .btn{
+        width: 100%;
+    }
+    .downloadBtn{
+        margin-bottom: 10px;
+    }
+}
+@media (max-width: 429px){
+    .flashSize{
+        width: 100%;
+    }
+}
+@media (max-width: 480px){
+    .loginMsg{
+        font-size: 30px;
+    }
+    .form-control{
+        width: 300px;
+    }
+}
+@media (max-width: 575px){
+    .alignCard{
+        margin: 0 auto;
+    }
+    
+    .ui.modal, .ui.active.modal{
+        width: 85%;
+    }
+}

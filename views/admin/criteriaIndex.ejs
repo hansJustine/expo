@@ -1,0 +1,22 @@
+<%- include('../partials/header') -%>
+<%- include('../partials/adminnavbar') -%>
+    <div class="container">
+        <h3 class="ui header center" id="criteriaHead">Special Awards</h3>
+        <div class="ui four doubling stackable cards center aligned cardForAward">
+            <% awards.forEach((award) =>{ %>
+                <% if(award.forJudge){ %>
+                    <div class="card awardsCard">  
+                        <div class="content">
+                            <a class="header"><%= award.awardName %> Award</a>
+                        </div>
+                        <% if(ifAdmin && !state.state){ %>
+                        <div class="extra content">  
+                            <a class="ui twitter button loadingBtns" href="/adminhub/criteria/<%= award._id %>">Edit Criteria</a>
+                        </div>
+                        <% } %>
+                    </div>
+                <% } %>
+            <% }) %> 
+        </div>
+    </div>
+<%- include('../partials/footer') -%>

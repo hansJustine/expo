@@ -1,0 +1,30 @@
+<%- include('../partials/header') -%>
+<%- include('../partials/adminnavbar') -%>
+<div class="container">
+    <form action="/booth/<%= booth._id %>?_method=PUT" method="POST">
+        <div class="editBoothForm">
+            <h1 class="ui header center aligned editHeader">Update Booth</h1>
+            <div class="ui form">
+                <div class="field">
+                    <label for="boothName">Booth Name <span class="requiredField">*</span></label>
+                    <input type="text" placeholder="Booth Name" name="boothName" value="<%= booth.boothName %>" class="regInput" required>
+                    <label for="image">Image</label>
+                    <input type="text" placeholder="Image" name="image" value="<%= booth.image %>" class="regInput">
+                    <label for="information">Information</label>
+                    <input type="text" placeholder="Information" name="information" value="<%= booth.information %>" class="regInput">
+                    <label for="subInformation">Sub Information</label>
+                    <input type="text" placeholder="Sub Information" name="subInformation" value="<%= booth.subInformation %>" class="regInput">
+                </div>
+                <a class="ui orange button" href="/adminhub/booths">
+                    <i class="arrow alternate circle left outline icon"></i>
+                    Go Back
+                </a>
+                <button class="ui button">
+                    <i class="edit icon"></i>
+                    Edit
+                </button>
+            </div>  
+        </div>
+    </form>
+</div>
+<%- include('../partials/footer') -%>
